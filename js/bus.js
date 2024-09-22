@@ -4,6 +4,7 @@ const availableSeat = document.getElementById('total-seat-decrees')
 const totalPriceEl = document.getElementById('total-price');
 const cupoonBtnEl = document.getElementById('cupoon-btn')
 const cupoonInputEl = document.getElementById('cupoon-input')
+const grandPriceEl =  document.getElementById('grand-price')
 
 const seatLength = [];
 let totalPrice = 0;
@@ -41,7 +42,18 @@ function handleSetSelect(event) {
     else{
         return alert('Maximum seat Booked')
     }
-
-    
-
 }
+
+document.getElementById('cupoon-btn').addEventListener('click', function(){
+    let cupoonSave = 0;
+    if(cupoonInputEl.value !== 'NEW50' && cupoonBtnEl.valu !== 'Couple 20'){
+         return alert('Invalid cupoon number')
+    }else if(cupoonInputEl.value === 'NEW50'){
+        cupoonSave = totalPrice * .15
+        grandPriceEl.innerText = totalPrice - cupoonSave
+    }   
+    else if(cupoonBtnEl.value === 'Couple 20'){
+        cupoonSave = totalPrice * .20
+        grandPriceEl.innerText = totalPrice - cupoonSave
+    }
+})
